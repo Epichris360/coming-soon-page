@@ -1,0 +1,113 @@
+{{>header}}
+    <a id="start"></a>
+    <div class="nav-container ">
+        <nav class="bar bar-4 bar--transparent bar--absolute" data-fixed-at="200">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1 col-md-offset-0 col-sm-2 col-sm-offset-0 col-xs-4 col-xs-offset-4">
+                        <div class="bar__module">
+                            <a href="index.html">
+                                <h1 class="logo logo-light" >
+                                    <strong style="color:white;" >UrLogo</strong>
+                                </h1>
+                                <!--<img class="logo logo-dark" alt="logo" src="img/logo-dark.png" />
+                                <img class="logo logo-light" alt="logo" src="img/logo-light.png" /> -->
+                            </a>
+                        </div>
+                        <!--end module-->
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </nav>
+        <!--end bar-->
+    </div>
+    <div class="main-container">
+        <section class="imageblock switchable feature-large height-100">
+            <div class="imageblock__content col-md-6 col-sm-4 pos-right">
+                <div class="background-image-holder">
+                    <img alt="image" src="img/coverImg.jpg" />
+                </div>
+            </div>
+            <div class="container pos-vertical-center">
+                <div class="row">
+                    <div class="col-md-5 col-sm-7">
+                        <h1>Launching Soon</h1>
+                        <span class="h2 countdown color--primary" data-date="09/25/2017" data-fallback-text="Getting ready"></span>
+                        <p class="lead">We're preparing to launch soon &mdash; hit the form below and we'll let you know when we're live.</p>
+                        <form class="submit" >
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input class="validate-required" 
+                                        type="text" name="NAME" id="name" placeholder="Your Name" 
+                                        required 
+                                    />
+                                </div>
+                                <div class="col-xs-12">
+                                    <input class="validate-required validate-email" 
+                                        type="email" name="EMAIL" id="email" placeholder="Email Address" 
+                                        required
+                                    />
+                                </div>
+                                <div class="col-xs-12">
+                                    <button type="submit" id=submitBtn 
+                                        class="btn btn--primary type--uppercase"
+                                    >I Want To Know!</button>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <span class="type--fine-print">By signing up, you agree to the
+                                        <a href="#">Terms of Service</a>
+                                    </span>
+                                </div>
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                    <input type="text" name="b_77142ece814d3cff52058a51f_f300c9cce8" tabindex="-1" value="">
+                                </div>
+                            </div>
+                            <!--end row-->
+                        </form>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+    </div>
+    <!--<div class="loader"></div>-->
+    <a class="back-to-top inner-link" href="#start" data-scroll-class="100vh:active">
+        <i class="stack-interface stack-up-open-big"></i>
+    </a>
+    {{>scripts}}
+    <script type="text/javascript" >
+       $(function(){
+
+            $('.submit').on('submit',function(event){
+                event.preventDefault() ;
+                const email = $("#email").val()
+                const name  = $("#name").val()
+                $.post("/add-email",
+                {
+                    email: email,
+                    name: name
+                },
+                function(data, status){
+                    if(data.status){
+                        swal(
+                            'Awesome!',
+                            data.message,
+                            'success'
+                        )
+                    }else{
+                        swal(
+                            'Oops...',
+                            data.message,
+                            'error'
+                        )
+                    }
+                });
+            });
+
+        });
+    </script>
+{{>footer}}

@@ -1,0 +1,24 @@
+{
+  "name": "LandingPage",
+  "version": "0.0.0",
+  "server": false,
+  "private": true,
+  "scripts": {
+    "test": "",
+    "build": ""
+  },
+  "dependencies": {
+    "nodemon": "latest",
+    "turbo360": "latest",
+    "vertex360": "latest"
+  },
+  "devDependencies": {
+    "express": "latest",
+    "rimraf": "latest"
+  },
+  "app": "5a2adf0b05259f0014d95508",
+  "deploy": [
+    "."
+  ],
+  "format": "vertex"
+}
